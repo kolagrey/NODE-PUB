@@ -6,6 +6,8 @@ const path = {
     js: ['./app.js', './test.js', './routes/*.js']
 };
 
+// gulp.task('default', ['jshint', 'test']);
+
 gulp.task('jshint', function(){
     return gulp.src(path.js)
     .pipe(jshint())
@@ -14,5 +16,5 @@ gulp.task('jshint', function(){
 
 
 gulp.task('test', function(){
-    console.log("Test")
+    return Promise.resolve('the value is ignored');
 });
