@@ -1,4 +1,4 @@
-const debugThrowError = true;
+const debugThrowError = false;
 if(debugThrowError) {
     throw new Error();
 }

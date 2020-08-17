@@ -1,20 +1,25 @@
-const gulp = require('gulp'),
-jshint = require('gulp-jshint'),
-stylish = require('jshint-stylish');
+"use strict";
+
+const gulp = require("gulp"),
+  jshint = require("gulp-jshint"),
+  stylish = require("jshint-stylish");
 
 const path = {
-    js: ['./app.js', './test.js', './routes/*.js']
+  js: ["./app.js", "./routes/*.js"],
 };
 
-// gulp.task('default', ['jshint', 'test']);
+gulp.task("jazz", () => {
+  return gulp.src(path.js).pipe(jshint()).pipe(jshint.reporter(stylish));
+});
 
-gulp.task('jshint', function(){
-    return gulp.src(path.js)
-    .pipe(jshint())
-    .pipe(jshint.reporter(stylish));
+gulp.task("test", () => {
+  require("./test.js");
+  return Promise.resolve('Done');
+});
+
+gulp.task("serve", () => {
+  require("./bin/www");
 });
 
 
-gulp.task('test', function(){
-    return Promise.resolve('the value is ignored');
-});
+gulp.task("default", gulp.series('jazz','test','serve'));
