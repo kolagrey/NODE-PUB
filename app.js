@@ -10,6 +10,8 @@ const usersRouter = require('./routes/users');
 
 const app = express();
 
+require('./webhook')(app);
+
 // view engine setup
 app.engine('hbs', hbs({
   extname: 'hbs',
