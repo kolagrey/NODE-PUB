@@ -26,11 +26,6 @@ gulp.task("jshint", () => {
   return gulp.src(path.js).pipe(jshint()).pipe(jshint.reporter(stylish));
 });
 
-/* gulp.task("test", () => {
-  require("./test.js");
-  return Promise.resolve('Done');
-}); */
-
 gulp.task("serve", () => {
   require("./bin/www");
 });
