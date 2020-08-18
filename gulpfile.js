@@ -36,4 +36,4 @@ gulp.task("serve", () => {
 });
 
 
-gulp.task("default", gulp.series('jazz','test','serve'));
+gulp.task("default", gulp.series('jshint','test','serve'));
