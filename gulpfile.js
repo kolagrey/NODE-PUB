@@ -6,7 +6,12 @@ const gulp = require("gulp"),
   mocha = require('gulp-mocha'),
   gutil = require('gulp-util');
 
-gulp.task('mocha', function() {
+const path = {
+  js: ["./app.js", "./routes/*.js"],
+};
+
+
+gulp.task('test', function() {
     return gulp.src(['test/*.js'], { read: false })
         .pipe(mocha({ reporter: 'list' }))
         .on('error', gutil.log);
@@ -16,18 +21,15 @@ gulp.task('watch-mocha', function() {
     gulp.watch(['test/**'], ['mocha']);
 });
 
-const path = {
-  js: ["./app.js", "./routes/*.js"],
-};
 
-gulp.task("jazz", () => {
+gulp.task("jshint", () => {
   return gulp.src(path.js).pipe(jshint()).pipe(jshint.reporter(stylish));
 });
 
-gulp.task("test", () => {
+/* gulp.task("test", () => {
   require("./test.js");
   return Promise.resolve('Done');
-});
+}); */
 
 gulp.task("serve", () => {
   require("./bin/www");
